@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Hola estamos viendo nuestra primera plantilla</h2>
+    {% if nombre_persona == 'Profesor'%}
+        <p>El curso lo imparte el professor titular</p>
+    {%else%}
+        <p>Este curso no lo imparte el titular</p>
+    {%endif%}
+    <p>El nombre del usuario es {{nombre_persona}} {{apellido_persona}} en {{momento_actual.day}}/{{momento_actual.month}}/{{momento_actual.year}}.</p>
+    <p><strong>Temas del curso: </strong></p>
+        
+        {% if temas %}
+        <ul>
+            {% for elTema in temas %}
+                <li>{{elTema}}</li>
+            {% endfor %}
+        </ul>
+        {%else%}
+            <p>No hay elementos que mostrar.</p>
+        {%endif%}
+
+</body>
+</html> 
+
