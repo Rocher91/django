@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 import datetime
 from django.template import Template,Context 
+from django.template import loader 
+from django.shortcuts import render
 
 class Persona():
 
@@ -14,11 +16,14 @@ def saludo( request ):
     fecha_actual    = datetime.datetime.now()
 
     temas_curso     = ["Plantillas","Modelos","Formularios","Vistas","Despliegue"]
-    doc_externo = open("C:/Users/xavier.rocher/Documents/Software/Python/django/Proyecto1/Proyecto1/plantillas/mi_plantilla.html")
+    #doc_externo = open("C:/Users/Xavi/Documents/SW/Python/django/Proyecto1/Proyecto1/plantillas/mi_plantilla.html")
     
-    plt = Template( doc_externo.read() )
-    doc_externo.close()
+    #plt = Template( doc_externo.read() )
+    #doc_externo.close()
 
+    #doc_externo = loader.get_template('mi_plantilla.html')
+
+    """
     ctx = Context(  { 
                         "nombre_persona"    : persona.nombre, 
                         "apellido_persona"  : persona.apellido, 
@@ -27,9 +32,20 @@ def saludo( request ):
                     } 
                   
                     )
-    document0 = plt.render( ctx )
+    """
+    dictionary =    { 
+                        "nombre_persona"    : persona.nombre, 
+                        "apellido_persona"  : persona.apellido, 
+                        "momento_actual"    : fecha_actual,
+                        "temas"             : temas_curso
+                    } 
+                  
+                    
+    #document0 = plt.render( ctx )
+    #documento = doc_externo.render( dictionary )
+
     
-    return HttpResponse( document0 )
+    return render( request, "mi_plantilla.html", dictionary )
 
 
 def despedida( request ):

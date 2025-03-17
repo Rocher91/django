@@ -6,19 +6,24 @@
     <title>Document</title>
 </head>
 <body>
+
+    {%include "superior/barra.html"%}
     <h2>Hola estamos viendo nuestra primera plantilla</h2>
+    {# COMENTARIO DE PRUEBA #}
+    {% comment %}COMENTARIO MULTILINEA{% endcomment %}
+
     {% if nombre_persona == 'Profesor'%}
         <p>El curso lo imparte el professor titular</p>
     {%else%}
         <p>Este curso no lo imparte el titular</p>
     {%endif%}
-    <p>El nombre del usuario es {{nombre_persona}} {{apellido_persona}} en {{momento_actual.day}}/{{momento_actual.month}}/{{momento_actual.year}}.</p>
+    <p>El nombre del usuario es {{nombre_persona|upper}} {{apellido_persona}} en {{momento_actual.day}}/{{momento_actual.month}}/{{momento_actual.year}}.</p>
     <p><strong>Temas del curso: </strong></p>
         
         {% if temas %}
         <ul>
             {% for elTema in temas %}
-                <li>{{elTema}}</li>
+                <li>{{elTema|first|lower}}</li>
             {% endfor %}
         </ul>
         {%else%}
