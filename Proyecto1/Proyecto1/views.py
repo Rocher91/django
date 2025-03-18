@@ -47,6 +47,15 @@ def saludo( request ):
     
     return render( request, "mi_plantilla.html", dictionary )
 
+def CursoC ( request ):
+
+    fecha_actual = datetime.datetime.now()
+
+    return render( request, "CursoC.html",{"dameFecha" : fecha_actual})
+
+def CursoCSS ( request ):
+
+    return render( request, "CursoCSS.html")
 
 def despedida( request ):
 
