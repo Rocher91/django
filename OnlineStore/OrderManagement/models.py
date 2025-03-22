@@ -3,12 +3,12 @@ from django.db import models
 # Create your models here.
 class Clients( models.Model ):
     name    = models.CharField( max_length = 30 )
-    address = models.CharField( max_length = 30 )
-    email   = models.EmailField()
+    address = models.CharField( max_length = 50, verbose_name="The address" )
+    email   = models.EmailField(blank=True,null=True)
     phone   = models.CharField( max_length = 7 )
 
     def __str__(self):
-        return f'Name : { self.name } address: { self.section } email: { self.price } phone: { self.phone }'
+        return f'{ self.name }'
 
 
 class Items( models.Model ):
@@ -21,10 +21,8 @@ class Items( models.Model ):
 
 
 class Orders( models.Model ):
-    number      = models.IntegerField()
+    num         = models.IntegerField()
     date        = models.DateField()
     email       = models.EmailField()
     delivered   = models.BooleanField()
 
-    def __str__(self):
-        return f'number : { self.number } date: { self.date } email: { self.email } delivered: {self.delivered}'
